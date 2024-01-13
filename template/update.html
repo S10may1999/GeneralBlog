@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  
+    <h3 class="pt-3 text-center">Update your Blog</h3>
+  
+            <form method="post" action="{% url 'updateName' blog.id %}" class="px-8 pt-2">
+              {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Title</label>
+                  <input type="text" class="form-control" name="title" id="exampleInputEmail1" value="{{blog.title}}" aria-describedby="emailHelp">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Description</label>
+                  <textarea name="desc" id="desc" cols="30" class="form-control" rows="10">{{blog.desc}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <a href="{% url 'Home' %}" class="btn btn-danger">cancel</a>
+              </form>
+
+{% endblock body %}
